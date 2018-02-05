@@ -23,7 +23,7 @@ This include will:
 enum E_eFix_OPWS_INFO
 {
     eFixPauseTicks,
-    
+
     bool:eFixPlayerDamaged,
     bool:eFixDesyncPassg,
     bool:eFixDoubleCFix,
@@ -159,7 +159,6 @@ public OnPlayerUpdate(playerid)
 				}
 			}
 		}
-
 	        #if defined eFix_OnPlayerUpdate
     return eFix_OnPlayerUpdate(playerid);
         #else
@@ -187,7 +186,6 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			GetPlayerHealth(playerid, eFix_Player[playerid][eFixATypeHealth]);
 			GetPlayerArmour(playerid, eFix_Player[playerid][eFixATypeArmour]);
 			}
-
     	#if defined eFix_OnPlayerStateChange
     return eFix_OnPlayerStateChange(playerid, newstate, oldstate)
         #else
@@ -223,7 +221,9 @@ public eFix_DesyncP(playerid,  weaponid, vehicleid, Float:x, Float:y, Float:z, s
     	{
     		new eWep = GetPlayerWeapon(i);
     		if(!IsPlayerConnected(i)) continue;
-    		if(IsAmmoable(eWep) && eFix_Player[i][eFixJustShot] &&IsPlayerInRangeOfPoint(i, 50.0, xx, yy, zz) && IsPAiming(i)) return OnPlayerWeaponShot(i, eWep, 5, playerid, eFix_Player[i][eFixShotX], eFix_Player[i][eFixShotY], eFix_Player[i][eFixShotZ]);
+    		if(IsAmmoable(eWep) && eFix_Player[i][eFixJustShot] && IsPlayerInRangeOfPoint(i, 50.0, xx, yy, zz) 
+    		&& IsPlayerInRangeOfPoint(playerid, 2.0, eFix_Player[i][eFixShotX], eFix_Player[i][eFixShotY], eFix_Player[i][eFixShotZ]) 
+    		&& IsPAiming(i)) return OnPlayerWeaponShot(i, eWep, 5, playerid, eFix_Player[i][eFixShotX], eFix_Player[i][eFixShotY], eFix_Player[i][eFixShotZ]);
 			}
 		}
 	return 1;
