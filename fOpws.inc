@@ -22,16 +22,16 @@ This include will:
 
 enum E_eFix_OPWS_INFO
 {
-	eFixPauseTicks,
+    eFixPauseTicks,
+    
+    bool:eFixPlayerDamaged,
+    bool:eFixDesyncPassg,
+    bool:eFixDoubleCFix,
+    bool:eFixJustShot,
 
-	bool:eFixPlayerDamaged,
-	bool:eFixDesyncPassg,
-	bool:eFixDoubleCFix,
-	bool:eFixJustShot,
-
-	Float:eFixShotX,
-	Float:eFixShotY,
-	Float:eFixShotZ,
+    Float:eFixShotX,
+    Float:eFixShotY,
+    Float:eFixShotZ,
 
     Float:eFixATypeHealth,
     Float:eFixBTypeHealth,
