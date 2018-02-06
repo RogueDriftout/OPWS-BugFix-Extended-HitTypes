@@ -270,7 +270,7 @@ public eFix_OpwsCheck(playerid, weaponid, vehicleid, Float:x, Float:y, Float:z, 
     return 1;
 }
  
-stock static IsAmmoable(weaponid)
+stock IsAmmoable(weaponid)
 {
     if(22 <= weaponid <= 34 || weaponid == 38) return 1;
     else return 0;
