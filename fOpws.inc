@@ -183,7 +183,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
             GetPlayerArmour(playerid, eFix_Player[playerid][eFixATypeArmour]);
         }
         #if defined eFix_OnPlayerStateChange
-    return eFix_OnPlayerStateChange(playerid, newstate, oldstate)
+    return eFix_OnPlayerStateChange(playerid, newstate, oldstate);
         #else
     return 1;
         #endif
