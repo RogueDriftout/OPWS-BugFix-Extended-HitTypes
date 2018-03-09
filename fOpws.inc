@@ -5,6 +5,7 @@ Bug Describton according to SA-MP Wiki:
     * It is called as BULLET_HIT_TYPE_VEHICLE with the correct hitid (the hit player's vehicleid)               *
     * if you are shooting a player which is in a vehicle. It won't be called as BULLET_HIT_TYPE_PLAYER at all.  *
     *************************************************************************************************************
+    
 This include will:
 ******************
     Call the OPWS callback only once for hittype BULLET_HIT_TYPE_PLAYER if it does damage the player and
@@ -166,7 +167,7 @@ public OnPlayerDeath(playerid, killerid, reason)
     eFix_Player[playerid][eFixDesyncPassg] = true;
  
         #if defined eFix_OnPlayerDeath
-    return eFixOnPlayerDeath(playerid, killerid, reason);
+    return eFix_OnPlayerDeath(playerid, killerid, reason);
         #else
     return 1;
         #endif
@@ -260,15 +261,14 @@ static eFix_IsPAiming(playerid)
     }
 	return 0;
 }
- 
-#if defined _ALS_OnPlayerSpawn
-  #undef OnPlayerSpawn
+#if defined _ALS_OnPlayerStateChange
+  #undef OnPlayerStateChange
 #else
-    #define _ALS_OnPlayerSpawn
+    #define _ALS_OnPlayerStateChange
 #endif
  
-#define OnPlayerSpawn OnPlayerSpawn
- 
+#define OnPlayerStateChange eFix_OnPlayerStateChange
+
 #if defined _ALS_OnPlayerUpdate
   #undef OnPlayerUpdate
 #else
